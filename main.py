@@ -7,8 +7,9 @@ def iniciar():
     ctk.set_default_color_theme("green")
     app.geometry('600x600')
     app.title('Cotação')
+    app.resizable(False, False)
 
-    frame_principal = ctk.CTkFrame(app)
+    frame_principal = ctk.CTkFrame(app, fg_color="#01153A")
     frame_principal.pack(fill="both", expand=True)
 
     abrir_home(frame_principal, app)

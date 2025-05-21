@@ -19,7 +19,7 @@ def abrir_pi(frame_atual, janela):
     entry_moeda = ctk.CTkEntry(frame, placeholder_text='Digite seus PI')
     entry_moeda.place(relx=0.5, rely=0.3, anchor='center')
 
-    ret_moeda = ctk.CTkLabel(frame, text='', font=('helvetica', 12))
+    ret_moeda = ctk.CTkLabel(frame, text='', font=('helvetica', 15))
     ret_moeda.place(relx=0.5, rely=0.4, anchor='n')
 
     def pesquisar_pi():
@@ -32,17 +32,24 @@ def abrir_pi(frame_atual, janela):
 
         pi = data.get("pi-network", {}).get("usd")
 
-        price.configure(text=f'Preço do Pi Network US$ {pi}')
-        price.after(15000, pesquisar_pi)
-        print(f'Valor atual: {pi}')
+        if pi == None:
+            price.configure(text=f'Preço do Pi Network não esta disponivel no momento')
+            price.after(15000, pesquisar_pi)
+            print(f'Valor atual: não disponivel no momento')
+        else:    
+            price.configure(text=f'Preço do Pi Network US$ {pi}')
+            price.after(15000, pesquisar_pi)
+            print(f'Valor atual: {pi}')
 
         
         def calcular(pi):
-            moeda = float(entry_moeda.get())
-            res = pi * moeda
 
-
-            ret_moeda.configure(text=f'Você tem US$ {int(res)} de dolares em PI')
+            if pi != None:
+                moeda = float(entry_moeda.get())
+                res = pi * moeda
+                ret_moeda.configure(text=f'Você tem US$ {int(res)} de dolares em PI')
+            else:
+                ret_moeda.configure(text=f'Preço do Pi Network não disponivel no momento... Aguarde!')
 
         if len(entry_moeda.get()) >= 1:
             calcular(pi)

@@ -18,7 +18,7 @@ def abrir_btc(frame_atual, janela):
     entry_moeda = ctk.CTkEntry(frame, placeholder_text='Digite seus BTC')
     entry_moeda.place(relx=0.5, rely=0.3, anchor='center')
 
-    ret_moeda = ctk.CTkLabel(frame, text='', font=('helvetica', 12))
+    ret_moeda = ctk.CTkLabel(frame, text='', font=('helvetica', 15))
     ret_moeda.place(relx=0.5, rely=0.4, anchor='n')
 
     def pesquisar_btc():
@@ -31,16 +31,24 @@ def abrir_btc(frame_atual, janela):
 
         btc = data.get("bitcoin", {}).get("usd")
 
-        price.configure(text=f'Preço do Bitcoin US$ {btc}$')
-        price.after(15000, pesquisar_btc)
-        print(f'Valor atual: {btc}')
+        if btc == None:
+            price.configure(text=f'Preço do Bitcoin não esta disponivel no momento')
+            price.after(15000, pesquisar_btc)
+            print(f'Valor atual: não disponivel no momento')
 
+        else:
+            price.configure(text=f'Preço do Bitcoin US$ {btc}')
+            price.after(15000, pesquisar_btc)
+            print(f'Valor atual: {btc}')
+    
         def calcular(btc):
-            moeda = float(entry_moeda.get())
-            res = btc * moeda
+            if btc != None:
+                moeda = float(entry_moeda.get())
+                res = btc * moeda
+                ret_moeda.configure(text=f'Você tem US$ {int(res)} de dolares em BTC')
+            else:
+                ret_moeda.configure(text='Preço do Bitcoin não disponivel no momento... Aguarde!')
 
-
-            ret_moeda.configure(text=f'Você tem US$ {int(res)} de dolares em BTC')
 
         if len(entry_moeda.get()) >= 1:
             calcular(btc)

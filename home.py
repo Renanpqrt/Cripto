@@ -6,7 +6,7 @@ from btc import abrir_btc
 def abrir_home(frame_atual, janela):
     limpar_tela(frame_atual)
 
-    titulo = ctk.CTkLabel(frame_atual, text='Cotação de criptomoedas', font=('Helvetica', 20))
+    titulo = ctk.CTkLabel(frame_atual, text='Cotação de criptomoedas', font=('Helvetica', 20), text_color="#74FFA2")
     titulo.place(relx=0.5, rely=0.02, anchor='center')
 
     b_pi = ctk.CTkButton(frame_atual, text='Pi Network', width=80, command=lambda: abrir_pi(frame_atual, janela))
