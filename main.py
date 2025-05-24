@@ -9,7 +9,7 @@ def iniciar():
     app.title('Cotações')
     app.resizable(False, False)
 
-    frame_principal = ctk.CTkFrame(app, fg_color="#01153A")
+    frame_principal = ctk.CTkFrame(app, fg_color="#082449")
     frame_principal.pack(fill="both", expand=True)
 
     abrir_home(frame_principal, app)

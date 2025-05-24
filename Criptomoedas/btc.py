@@ -9,10 +9,10 @@ def abrir_btc(frame_atual, janela):
     frame = ctk.CTkFrame(frame_atual, fg_color="#BD7B00")
     frame.pack(fill='both', expand=True)
 
-    text = ctk.CTkLabel(frame, text='Cotação atual do Bitcoin', font=('Arial', 20), bg_color="#BD7B00")
+    text = ctk.CTkLabel(frame, text='Cotação atual do Bitcoin', font=('Arial', 25, 'bold'), bg_color="#BD7B00")
     text.place(relx=0.5, rely=0.02, anchor='center')
 
-    price = ctk.CTkLabel(frame_atual, text='', font=('Helvetica', 15), bg_color="#BD7B00")
+    price = ctk.CTkLabel(frame_atual, text='', font=('Arial', 20), bg_color="#BD7B00")
     price.place(relx=0.5, rely=0.1, anchor='center')
 
     entry_moeda = ctk.CTkEntry(frame, placeholder_text='Digite seus BTC')

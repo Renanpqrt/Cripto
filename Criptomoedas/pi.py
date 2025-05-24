@@ -10,10 +10,10 @@ def abrir_pi(frame_atual, janela):
     frame = ctk.CTkFrame(frame_atual, fg_color="#9900FF")
     frame.pack(fill='both', expand=True)
 
-    text = ctk.CTkLabel(frame, text='Cotação atual do Pi Network', font=('Arial', 20), bg_color="#9900FF")
+    text = ctk.CTkLabel(frame, text='Cotação atual do Pi Network', font=('Arial', 25, 'bold'), bg_color="#9900FF")
     text.place(relx=0.5, rely=0.02, anchor='center')
 
-    price = ctk.CTkLabel(frame, text='', font=('Helvetica', 15), bg_color='#9900FF')
+    price = ctk.CTkLabel(frame, text='', font=('Arial', 20), bg_color='#9900FF')
     price.place(relx=0.5, rely=0.1, anchor='center')
 
     entry_moeda = ctk.CTkEntry(frame, placeholder_text='Digite seus PI')
