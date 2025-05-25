@@ -1,5 +1,5 @@
 import customtkinter as ctk
-from util import limpar_tela
+from util import limpar_tela, resource_path
 from Criptomoedas.pi import abrir_pi
 from Criptomoedas.btc import abrir_btc
 from moedas.dolar import abrir_dolar
@@ -10,7 +10,7 @@ from customtkinter import CTkImage
 def abrir_home(frame_atual, janela):
     limpar_tela(frame_atual)
 
-    fundo_img = Image.open("imagens/fundo.png")
+    fundo_img = Image.open(resource_path("imagens/fundo.png"))
     fundo_img = CTkImage(light_image=fundo_img, size=(600, 600))
 
     fundo = ctk.CTkLabel(frame_atual, image=fundo_img, text='')
