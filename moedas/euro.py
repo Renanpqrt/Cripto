@@ -11,13 +11,13 @@ def abrir_euro(frame_atual, janela):
     frame = ctk.CTkFrame(frame_atual, fg_color="#746303")
     frame.pack(fill='both', expand=True)
 
-    titulo = ctk.CTkLabel(frame, text='Cotação atual do Euro', font=('Arial', 20))
+    titulo = ctk.CTkLabel(frame, text='Cotação atual do Euro', font=('Arial', 25, 'bold'))
     titulo.place(relx=0.5, rely=0.02, anchor='center')
 
     b_voltar = ctk.CTkButton(frame, text='Voltar', command=lambda: abrir_home(frame_atual, janela), width=80, bg_color="#746303")
     b_voltar.place(relx=0.5, rely=0.6, anchor='center')
 
-    price = ctk.CTkLabel(frame, text='', font=('Helvetica', 15), bg_color='#746303')
+    price = ctk.CTkLabel(frame, text='', font=('Arial', 20), bg_color='#746303')
     price.place(relx=0.5, rely=0.1, anchor='center')
 
     entry_eur = ctk.CTkEntry(frame, placeholder_text='Euros')
@@ -38,15 +38,15 @@ def abrir_euro(frame_atual, janela):
         if euro == None:
             price.configure(text='O preço do euro atualmente não esta disponivel no momento')
         else:    
-            price.configure(text=f'O preço do euro atualmente convertendo para real esta em  R${euro}')
+            price.configure(text=f'O preço do euro atualmente esta em R${euro}')
 
     def calcular():
         global euro
 
         if euro != None:
-            doll = float(entry_eur.get())
-            res = doll * float(euro)
-            ret.configure(text=f'Seus euros convertidos para reais são iguais a {int(res)}R$')
+            eur = float(entry_eur.get())
+            res = eur * float(euro)
+            ret.configure(text=f'Seus euros convertidos para reais são iguais a R${int(res)}')
         else:
             ret.configure(text='Preço do euro não disponivel no momento... Aguarde!')
         
