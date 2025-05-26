@@ -6,6 +6,8 @@ def abrir_btc(frame_atual, janela):
     from home import abrir_home
     limpar_tela(frame_atual)
 
+    btc = None
+
     frame = ctk.CTkFrame(frame_atual, fg_color="#BD7B00")
     frame.pack(fill='both', expand=True)
 
@@ -22,6 +24,8 @@ def abrir_btc(frame_atual, janela):
     ret_moeda.place(relx=0.5, rely=0.4, anchor='n')
 
     def pesquisar_btc():
+        global btc
+
         url = "https://api.coingecko.com/api/v3/simple/price"
         parametros = {'ids': 'bitcoin', 
                       "vs_currencies": 'usd',
@@ -41,19 +45,20 @@ def abrir_btc(frame_atual, janela):
             price.after(15000, pesquisar_btc)
             print(f'Valor atual: {btc}')
     
-        def calcular(btc):
-            if btc != None:
-                moeda = float(entry_moeda.get())
-                res = btc * moeda
-                ret_moeda.configure(text=f'Você tem US$ {int(res)} de dolares em BTC')
-            else:
-                ret_moeda.configure(text='Preço do Bitcoin não disponivel no momento... Aguarde!')
+    def calcular():
+        global btc
 
-
-        if len(entry_moeda.get()) >= 1:
-            calcular(btc)
+        if btc != None:
+            moeda = float(entry_moeda.get())
+            res = btc * moeda
+            ret_moeda.configure(text=f'Você tem US$ {int(res)} de dolares em BTC')
+        else:
+            ret_moeda.configure(text='Preço do Bitcoin não disponivel no momento... Aguarde!')
 
     pesquisar_btc()
 
+    b_calcular = ctk.CTkButton(frame, text='Calcular', width=80, command=calcular)
+    b_calcular.place(relx=0.5, rely=0.5, anchor='center')
+
     b_voltar = ctk.CTkButton(frame, text='Voltar', command=lambda: abrir_home(frame_atual, janela), width=80)
-    b_voltar.place(relx=0.5, rely=0.5, anchor='center')
+    b_voltar.place(relx=0.5, rely=0.7, anchor='center')
